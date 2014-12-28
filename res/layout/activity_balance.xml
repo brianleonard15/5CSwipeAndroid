@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:columnCount="1"
+    android:orientation="vertical"
+    tools:context="${packageName}.${activityClass}" >
+
+    <Button
+        android:id="@+id/buttonMeals"
+        style="@style/AppBaseTheme"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@+id/buttonFlex"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/clearbutton4"
+        android:text="Button"
+        android:textColor="@android:color/white"
+        android:textSize="28dp" />
+
+    <Button
+        android:id="@+id/buttonCash"
+        style="@style/AppBaseTheme"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_above="@+id/buttonMeals"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/clearbutton4"
+        android:text="Button"
+        android:textColor="@android:color/white"
+        android:textSize="28dp" />
+
+    <Button
+        android:id="@+id/buttonFlex"
+        style="@style/AppBaseTheme"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="98dp"
+        android:background="@drawable/clearbutton4"
+        android:text="Button"
+        android:textColor="@android:color/white"
+        android:textSize="28dp" />
+
+</RelativeLayout>

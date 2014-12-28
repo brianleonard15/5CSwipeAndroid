@@ -1,0 +1,267 @@
+/* Style Sheet */
+body { 
+       background: transparent;
+       margin-right: 10; 
+       margin-left: 10;
+       margin-top: 10;
+       margin-bottom: 10;
+       font-family: Arial, Verdana, Helvetica, sans-serif; 
+       font-size: 5px;
+       vertical-align: middle;
+       }
+A:link, A:visited, A:active { 
+       color: #000000; 
+       }
+td {   
+       font-family: Arial, Verdana, Helvetica, sans-serif; 
+       font-size: 40px;
+       }
+h1 {
+       color: #cc0000;
+       font-weight:bold;
+       font-size: 16px; 
+       }
+h2 {
+       color: #471d7f;
+       font-weight:bold;
+       font-size: 14px; 
+       }
+h3 {
+       color: #7d1611;
+       font-weight:bold,italic;
+       font-size: 14px; 
+       }
+h4 {
+       color: black;
+       font-size: 11px; 
+       }
+
+.hotbutton {
+       text-align: left;
+       }
+
+.mainlink {
+       cursor: hand;
+       text-decoration: none;
+       color: black;
+       font-size: 11px;
+       }
+
+.tabletitlebar {
+       border: 1px solid white;
+       background: #ccdded;  
+       vertical-align: center;
+       }
+.tabletitlebarnum {
+       border: 1px solid white;
+       background: #ccdded;  
+       vertical-align: center;
+       text-align: right;
+       }
+.tablefirstcol {
+       border: 1px solid white;
+       color: white;
+       background: transparent;
+       vertical-align: center;
+       }
+.tablecol {
+       border: 1px solid white;
+       color: white;
+       background: transparent;
+       text-align: left;
+       }
+.tablecolnum {
+       border: 1px solid white;
+       color: white;
+       background: transparent;
+       text-align: right;
+       }
+
+.lowerbar:link, .lowerbar:visited,.lowerbar:active { 
+       color: white; 
+       }
+.lowerbar {
+       color: white;
+       background: 4A217E;
+       vertical-align: top;
+       }
+
+.sidebar1 {
+       background: #000066;
+       }
+.sidebar1title {
+       font-size: 12px; 
+       font-weight:bold;
+       color: white;
+       background: #CF7600;
+       text-align: left;
+       } 
+.sidebar1body {
+       font-size: 11px; 
+       font-weight:normal;
+       color: black;
+       background: white;
+       text-align: left;
+       } 
+
+
+.sidebar2 {
+       background: #C1C49A;
+       }
+.sidebar2title {
+       font-size: 12px; 
+       font-weight:bold;
+       color: white;
+       background: #4A217E;
+       text-align: left;
+       } 
+.sidebar2body {
+       font-size: 11px; 
+       background: #C1C49A;
+       padding-left: 10;
+       }
+.sidebar2link {
+       font-size: 11px; 
+       background: #C1C49A;
+       }
+.sidebar2copy {
+       font-size: 11px; 
+       background: #C1C49A;
+       }
+
+.quicklogin {
+       display: inline;
+      }
+
+
+.sidebar3 {
+       background: #C1C49A;
+       }
+.sidebar3title {
+       font-size: 12px; 
+       font-weight:bold;
+       color: white;
+       background: #4A217E;
+       text-align: left;
+       } 
+.sidebar3body {
+       font-size: 11px; 
+       font-weight:normal;
+       color: black;
+       background: #C1C49A;
+       text-align: left;
+       padding-left: 10;
+       } 
+
+
+.title1 {
+       color: #9f1b06;
+       font-weight:bold;
+       font-size: 14px; 
+       }
+.subtitle1 {
+       color: #9f1b06;
+       font-weight:bold;
+       font-size: 12px; 
+       }
+
+.mainbody {
+       background: white;
+       vertical-align: top;
+       }
+
+.fullscreen {
+       background: white;
+       vertical-align: top;
+       }
+
+.form {
+       background: #eeeecc;
+       vertical-align: top;
+       }
+
+.formtitle {
+       color: #9f2d20;
+       font-weight:bold;
+       font-size: 14px; 
+       }
+.formsubtitle {
+       color: #004159;
+       font-weight:bold;
+       font-size: 12px; 
+       }
+.forminstructions {
+       font-size: 11px; 
+       }
+
+
+
+.question {
+       color: red;
+       }
+.answer {
+       color: black;
+       }
+
+.about {
+       cursor: hand;
+       vertical-align: bottom;
+       }
+.input   { 
+       font-size:11px; 
+       color:#333333
+       vertical-align: middle;
+       font-family: Arial, Verdana, Helvetica, sans-serif; 
+       }
+.caption {
+       font-size:11px; 
+       color: #333333;
+       font-weight:bold;
+       text-align: left; 
+       white-space: nowrap;
+       }
+.error {
+       color: #af0000;
+       font-weight:bold;
+       font-size: 11px; 
+       }
+
+
+.receipttitleout {
+       background: #cccc99;
+       }
+.receipttitlein {
+       font-size: 11px; 
+       font-weight:normal;
+       color: black;
+       background: #eeeecc;
+       text-align: left;
+       } 
+
+.tableheader {
+       border: 1px solid black;
+       background: #eeeecc;
+       font-family: Arial, Verdana, Helvetica, sans-serif; 
+       font-size: 11px; 
+       }
+
+
+.listouterbox {
+       background: black;
+       }
+
+.listinnerbox {
+       background: #dfdfdf;
+       font-family: Arial, Verdana, Helvetica, sans-serif; 
+       font-weight:bold;
+       font-size: 11px;
+       }
+
+.viewlink { 
+       color: #cc0000; 
+       }
+
+.aboutbox {
+       background: white;
+       font-family: Arial, Verdana, Helvetica, sans-serif; 
+       }
