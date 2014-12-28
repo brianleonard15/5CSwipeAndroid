@@ -1,0 +1,1 @@
+5C Swipe gives students of the Claremont Consortium access to their Flex, Claremont Cash, and meal balances by logging in with their username and password.  Credentials can be securely saved within the app.  Students can register at http://cards.cuc.claremont.edu. 
