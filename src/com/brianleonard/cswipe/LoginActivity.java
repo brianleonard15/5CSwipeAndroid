@@ -16,6 +16,7 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 /**
@@ -29,6 +30,8 @@ public class LoginActivity extends Activity {
 	private EditText passwordEditText;
 	public static Button signInButton;
 	private CheckBox checkBox;
+	public static TextView wrongText;
+	private WebView webView;
 	
     /** Called when the activity is first created. */
 	@Override
@@ -41,20 +44,24 @@ public class LoginActivity extends Activity {
 	    signInButton.setBackgroundResource(R.drawable.loginbuttondisabled);
 	    signInButton.setTextColor(Color.LTGRAY);
 	    
-        final WebView webView = (WebView) findViewById(R.id.webView1);
+	    wrongText = (TextView) findViewById(R.id.textView1);
+	    wrongText.setVisibility(4);
+	    
+        webView = (WebView) findViewById(R.id.webView1);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(new MyJavaScriptInterface(), "HtmlViewer");
 
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
+            	System.out.println("aaaaa");
                 webView.loadUrl("javascript:HtmlViewer.showJustHTML" +
                         "(document.getElementsByTagName('body')[0].innerHTML);");
                 webView.loadUrl("javascript:HtmlViewer.showHTML" +
                         "(document.getElementsByTagName('body')[0].innerHTML" +
                 ", document.getElementsByTagName('table')[7].getElementsByTagName('table')[3].outerHTML" +
                 ", document.getElementsByTagName('table')[7].getElementsByTagName('table')[4].outerHTML" +
-                ", document.getElementsByTagName('table')[7].getElementsByTagName('table')[3].outerHTML);");
+                ", document.getElementsByTagName('table')[7].getElementsByTagName('table')[5].outerHTML);");
             }
         });
         
@@ -77,12 +84,12 @@ public class LoginActivity extends Activity {
 	        @Override
 	        public void onClick(View v) {
 	    		if(v.getId() == R.id.sign_in_button){
-	    	        //String givenUsername = usernameEditText.getEditableText().toString();
-	    	        //String givenPassword = passwordEditText.getEditableText().toString();
+	    	        String givenUsername = usernameEditText.getEditableText().toString();
+	    	        String givenPassword = passwordEditText.getEditableText().toString();
 	    			
 	    			// CHANNNGNGNGNENEGNGNENGNE
-	    			String givenUsername = "40155049";
-	    			String givenPassword = "Baloney1";
+	    			//String givenUsername = "40155049";
+	    			//String givenPassword = "Baloney1";
 	    			
 	    			CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
 	    			if (checkBox.isChecked()) {
@@ -103,6 +110,12 @@ public class LoginActivity extends Activity {
        
 	}
 	
+	 @Override
+	    protected void onStart() {
+	        super.onStart();
+	        webView.loadUrl("https://cards.cuc.claremont.edu/login.php");
+	 }
+	
 	class MyJavaScriptInterface {
 
 		@JavascriptInterface public void showJustHTML(String html) {
@@ -118,15 +131,32 @@ public class LoginActivity extends Activity {
 				    }
 				});
 			}
+			if (html.indexOf("Invalid") > 0) {
+				runOnUiThread(new Runnable() {
+				     @Override
+				     public void run() {
+							LoginActivity.wrongText.setVisibility(0);
+				    }
+				});
+			}
+			else {
+				runOnUiThread(new Runnable() {
+				     @Override
+				     public void run() {
+							LoginActivity.wrongText.setVisibility(4);
+				    }
+				});
+			}
 		}
 		@JavascriptInterface public void showHTML(String html, String flexTable, String cashTable, String mealsTable) {
 	    	if (html.indexOf("Log Out") > 0) {  
+	    		System.out.println("bbbb");
 	    		// Find Flex Balance
 	    		String flexRange = html.substring(html.indexOf("Board Plus</font>"),html.indexOf("Claremont Cash</font>"));
 	    		int flexStartIndex = flexRange.indexOf("Current Balance: ");
 	    		int flexEndIndex = flexRange.indexOf("</b>");
 	    		String flex = flexRange.substring(flexStartIndex + 17, flexEndIndex);
-	    		System.out.println(flex);
+	    		//System.out.println(flex);
 	    		
 	    		// Find Claremont Cash Balance
 	    		String cashRangeStart = html.substring(html.indexOf("Claremont Cash</font>"));
@@ -134,15 +164,15 @@ public class LoginActivity extends Activity {
 	    		int cashStartIndex = cashRange.indexOf("Current Balance: ");
 	    		int cashEndIndex = cashRange.indexOf("</b>");
 	    		String cash = cashRange.substring(cashStartIndex + 17, cashEndIndex);
-	    		System.out.println(cash);
+	    		//System.out.println(cash);
 	    		
 	    		// Find Meals Balance
 	    		// CHANNGENNGENENGNEGNEGE
-	    		String newhtml = "<td class='tablecolnum'>5</td></tr><tr><td class='tablefirstcol' >5/10 11:12 AM</td><td class='tablecol'>PIT McConnell 2-Regular</td><td class='tablecolnum'>-1</td><td class='tablecolnum'>4</td></tr>";
+	    		//String newhtml = "<td class='tablecolnum'>5</td></tr><tr><td class='tablefirstcol' >5/10 11:12 AM</td><td class='tablecol'>PIT McConnell 2-Regular</td><td class='tablecolnum'>-1</td><td class='tablecolnum'>4</td></tr>";
 
-	    		String mealsRangeStart = newhtml.substring(newhtml.lastIndexOf("tablecolnum"));
+	    		String mealsRangeStart = html.substring(html.lastIndexOf("tablecolnum"));
 	    		String meals = mealsRangeStart.substring(13, mealsRangeStart.indexOf("<"));
-	    		System.out.println(meals);
+	    		//System.out.println(meals);
 	    		
 	    	    Intent myIntent = new Intent(LoginActivity.this, BalanceActivity.class); 
 	    	    myIntent.putExtra("flex", flex);

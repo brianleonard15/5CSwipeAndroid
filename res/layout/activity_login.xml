@@ -25,7 +25,7 @@
             android:layout_gravity="center_horizontal"
             android:text="Incorrect Username/Password"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="@android:color/black" />
+            android:textColor="#f00" />
 
         <EditText
             android:id="@+id/email"
@@ -88,7 +88,9 @@
             android:id="@+id/webView1"
             android:layout_width="254dp"
             android:layout_height="11dp"
-            android:layout_weight="0.63" />
+            android:layout_weight="0.63"
+            android:visibility="visible" />
+
     </LinearLayout>
 
     <!-- Login form -->

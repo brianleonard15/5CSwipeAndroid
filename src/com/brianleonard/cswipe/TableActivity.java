@@ -21,7 +21,7 @@ public class TableActivity extends Activity {
 		Intent intent = getIntent();
 	    String table = intent.getStringExtra("table");
 	    table = table.replace("390", "100%");
-	    System.out.println(table);
+	    //System.out.println(table);
 	    
 	    //htmlTable.loadData(table, "text/html", null);
 	    htmlTable.getSettings().setLoadWithOverviewMode(true);
