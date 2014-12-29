@@ -34,12 +34,15 @@ public class LoginActivity extends Activity {
 	public static TextView wrongText;
 	private WebView webView;
 	private ProgressDialog progressDialog;
+	private SecurePreferences preferences;
 	
     /** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    setContentView(R.layout.activity_login);
+	    
+
 	    
 	    signInButton = (Button) findViewById(R.id.sign_in_button);
 	    signInButton.setEnabled(false);
@@ -72,12 +75,13 @@ public class LoginActivity extends Activity {
 	    usernameEditText = (EditText) findViewById(R.id.email);
 	    passwordEditText = (EditText) findViewById(R.id.password);
 	    
-		final SecurePreferences preferences = new SecurePreferences(getBaseContext(), "user-info", 
+		preferences = new SecurePreferences(getBaseContext(), "user-info", 
 				"YourSecurityKey", true);
 		//Get
 		String username = preferences.getString("username");
 		String password = preferences.getString("password");
 		
+		usernameEditText.setHint("Student ID");
 		usernameEditText.setText(username);
 		passwordEditText.setText(password);
 
@@ -100,6 +104,10 @@ public class LoginActivity extends Activity {
 	    				preferences.put("username", givenUsername);
 	    				preferences.put("password", givenPassword);
 	    			}
+	    			else {
+	    				preferences.put("username", "");
+	    				preferences.put("password", "");
+	    			}
 	    			
 
 	    	        //System.out.println("Given username :" + username + " Given password :" + password);
@@ -115,6 +123,14 @@ public class LoginActivity extends Activity {
 	 @Override
 	    protected void onStart() {
 	        super.onStart();
+		    signInButton.setEnabled(false);
+		    signInButton.setBackgroundResource(R.drawable.loginbuttondisabled);
+		    signInButton.setTextColor(Color.LTGRAY);
+			String username = preferences.getString("username");
+			String password = preferences.getString("password");
+			
+			usernameEditText.setText(username);
+			passwordEditText.setText(password);
 	        webView.loadUrl("https://cards.cuc.claremont.edu/login.php");
 	 }
 	
