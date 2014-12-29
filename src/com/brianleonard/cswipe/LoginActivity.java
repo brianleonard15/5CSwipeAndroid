@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.app.ProgressDialog;
 
 
 /**
@@ -32,6 +33,7 @@ public class LoginActivity extends Activity {
 	private CheckBox checkBox;
 	public static TextView wrongText;
 	private WebView webView;
+	private ProgressDialog progressDialog;
 	
     /** Called when the activity is first created. */
 	@Override
@@ -54,7 +56,6 @@ public class LoginActivity extends Activity {
         webView.setWebViewClient(new WebViewClient() {
             @Override
             public void onPageFinished(WebView view, String url) {
-            	System.out.println("aaaaa");
                 webView.loadUrl("javascript:HtmlViewer.showJustHTML" +
                         "(document.getElementsByTagName('body')[0].innerHTML);");
                 webView.loadUrl("javascript:HtmlViewer.showHTML" +
@@ -84,6 +85,7 @@ public class LoginActivity extends Activity {
 	        @Override
 	        public void onClick(View v) {
 	    		if(v.getId() == R.id.sign_in_button){
+	    			progressDialog = ProgressDialog.show(LoginActivity.this, "", "Loading...");
 	    	        String givenUsername = usernameEditText.getEditableText().toString();
 	    	        String givenPassword = passwordEditText.getEditableText().toString();
 	    			
@@ -136,6 +138,7 @@ public class LoginActivity extends Activity {
 				     @Override
 				     public void run() {
 							LoginActivity.wrongText.setVisibility(0);
+							progressDialog.dismiss();
 				    }
 				});
 			}
@@ -149,8 +152,8 @@ public class LoginActivity extends Activity {
 			}
 		}
 		@JavascriptInterface public void showHTML(String html, String flexTable, String cashTable, String mealsTable) {
-	    	if (html.indexOf("Log Out") > 0) {  
-	    		System.out.println("bbbb");
+	    	if (html.indexOf("Log Out") > 0) { 
+	    		progressDialog.dismiss();
 	    		// Find Flex Balance
 	    		String flexRange = html.substring(html.indexOf("Board Plus</font>"),html.indexOf("Claremont Cash</font>"));
 	    		int flexStartIndex = flexRange.indexOf("Current Balance: ");
